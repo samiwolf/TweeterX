@@ -6,6 +6,8 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import {QuicklinkComponent} from "../components/quicklink/quicklink.component";
+import {PostComponent} from "../components/post/post.component";
+import {TweetComponent} from "../components/tweet/tweet.component";
 
 
 @NgModule({
@@ -13,9 +15,9 @@ import {QuicklinkComponent} from "../components/quicklink/quicklink.component";
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
   ],
-  declarations: [HomePage, QuicklinkComponent],
-  exports: [QuicklinkComponent]
+  declarations: [HomePage, QuicklinkComponent, PostComponent, TweetComponent],
+  exports: [QuicklinkComponent, PostComponent, TweetComponent]
 })
 export class HomePageModule {}
