@@ -99,4 +99,12 @@ export class TweetService {
         content: text
       }).toPromise();
   }
+
+  search(text: string)
+  {
+    return this.http
+      .post(`${this.handlerUrl}/search`, {
+        token: text
+      }).toPromise();
+  }
 }

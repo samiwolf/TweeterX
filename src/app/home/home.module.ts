@@ -11,6 +11,7 @@ import {TweetComponent} from "../components/tweet/tweet.component";
 import {UserProfileComponent} from "../components/user-profile/user-profile/user-profile.component";
 import {UsersListComponent} from "../components/users-list/users-list.component";
 import {MyProfileComponent} from "../components/my-profile/my-profile/my-profile.component";
+import {HeaderComponent} from "../components/header/header/header.component";
 
 
 @NgModule({
@@ -21,8 +22,8 @@ import {MyProfileComponent} from "../components/my-profile/my-profile/my-profile
     HomePageRoutingModule,
   ],
   declarations: [HomePage, QuicklinkComponent, PostComponent,
-    TweetComponent, UserProfileComponent, UsersListComponent, MyProfileComponent],
+    TweetComponent, UserProfileComponent, UsersListComponent, MyProfileComponent, HeaderComponent],
   exports: [QuicklinkComponent, PostComponent,
-    TweetComponent, UserProfileComponent, UsersListComponent, MyProfileComponent]
+    TweetComponent, UserProfileComponent, UsersListComponent, MyProfileComponent, HeaderComponent]
 })
 export class HomePageModule {}

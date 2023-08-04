@@ -1,0 +1,29 @@
+<ion-toolbar>
+
+    <form (ngSubmit)="onSubmit()">
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col size="1">
+            <img class="ion-margin-start" src="assets/icon/tweeter.jpg" width="40px" alt="">
+          </ion-col>
+          <ion-col size="11">
+            <ion-searchbar [(ngModel)] ="searchedText" name="searchedText">
+              <!--#searchBar-->
+              <!--(ionFocus)="ionFocusSearchBar($event)"-->
+              <!--(ionCancel)="ionCancel()"-->
+              <!--(ionClear)="ionClear()"-->
+              <!--(ionChange)="ionChangeSearchBar($event)"-->
+              <!--(ionInput)="ionInputSearchBar($event)"-->
+              <!--*ngIf="showSearchBar"-->
+              <!--animated="true"-->
+              <!--autocomplete="name"-->
+              <!--class="ion-search-bar"-->
+              <!--debounce="300"-->
+              <!--value="{{ searchedText }}"-->
+            </ion-searchbar>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </form>
+</ion-toolbar>

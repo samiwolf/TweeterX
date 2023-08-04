@@ -26,9 +26,18 @@
 @import "@ionic/angular/css/flex-utils.css";
 
 .button-activated{
-  --background: black !important;
+  --background: grey !important;
 }
 
 .cursor-pointer{
   cursor: pointer;
+}
+
+.sc-ion-searchbar-md-h {
+  --box-shadow: none !important;
+}
+.text-color-black{
+  --color: black;
+  --background: transparent;
+
 }

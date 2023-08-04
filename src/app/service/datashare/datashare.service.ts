@@ -9,6 +9,8 @@ export class DatashareService {
   private _currentUser: any = null;
   currentUserUpdated = new Subject<any>();
   successfullyTweeted = new Subject<any>();
+  searchResults = new Subject<any>();
+  showSearchResult = false;
   constructor() { }
 
 
