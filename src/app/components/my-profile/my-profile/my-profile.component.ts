@@ -42,8 +42,9 @@ export class MyProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
   {
     this.tweetService.getTweets().then(
       (res: any) => {
+        console.log('loadMyTweets', res);
         this.tweetCount = res.count;
-        this.tweets = res.tweets;
+        this.tweets = res.my_tweets;
       }
     );
   }
@@ -57,6 +58,7 @@ export class MyProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
     this.followers = [];
     this.followings = [];
 
+    this.loadMyTweets();
 
     this.tweetService.getFollowers().then(
       (res: any) => {
