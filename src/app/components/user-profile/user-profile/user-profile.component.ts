@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {TweetService} from "../../../service/tweet/tweet.service";
 import {DatashareService} from "../../../service/datashare/datashare.service";
 import {Subject, takeUntil} from "rxjs";
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-user-profile',
@@ -19,6 +20,7 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
   destroy$ = new Subject<any>();
 
   constructor(private tweetService: TweetService,
+              private toastController: ToastController,
               public dataShareService: DatashareService) {
     this.user = this.dataShareService.currentUser;
   }
@@ -35,6 +37,16 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
           this.loadData();
         }
       });
+  }
+
+  async presentToast(text: string) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 1500,
+      position: 'bottom',
+    });
+
+    await toast.present();
   }
 
   loadData()
@@ -80,4 +92,17 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  follow(id: string) {
+    this.tweetService.follow(id).then(
+      (res: any) =>
+      {
+        console.log('res', res);
+        this.presentToast(res.resp);
+      }
+    ).catch(
+      (err) => {
+        console.log('err', err);
+      }
+    );
+  }
 }
