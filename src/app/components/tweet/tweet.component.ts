@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DatashareService} from "../../service/datashare/datashare.service";
 
 @Component({
   selector: 'app-tweet',
@@ -9,11 +10,16 @@ export class TweetComponent  implements OnInit {
 
   @Input() tweet: any;
 
-  constructor() { }
+  constructor( public dataShareService: DatashareService) { }
 
   ngOnInit() {
     // console.log('one tweet: ', this.tweet);
     this.parseTweet();
+  }
+
+  viewUserProfile(user: any) {
+    this.dataShareService.currentUser = user;
+    this.dataShareService.currentPage = 'user';
   }
 
   parseTweet() {

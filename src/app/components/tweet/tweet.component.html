@@ -1,11 +1,11 @@
 <ion-row class="wrapper">
-  <ion-col size="2">
-    <ion-avatar>
+  <ion-col size="2" (click)="viewUserProfile(tweet.user)">
+    <ion-avatar class="cursor-pointer">
       <ion-img src="assets/icon/person-circle.svg"></ion-img>
     </ion-avatar>
   </ion-col>
   <ion-col size="10">
-    <ion-row class="tweet-info">
+    <ion-row class="tweet-info cursor-pointer"  (click)="viewUserProfile(tweet.user)">
       <ion-col size="12">
         <span class="name">{{ tweet.user.username }}</span>
         <span class="handle">@{{ tweet.user.username }}</span>
