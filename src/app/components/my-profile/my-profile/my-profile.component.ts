@@ -25,7 +25,27 @@ export class MyProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    // this.handleCurrentUserChange();
+    this.handleTweetUpdate();
+  }
+
+  handleTweetUpdate() {
+    this.dataShareService.successfullyTweeted
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((response: any) => {
+        if (response) {
+          this.loadMyTweets();
+        }
+      });
+  }
+
+  loadMyTweets()
+  {
+    this.tweetService.getTweets().then(
+      (res: any) => {
+        this.tweetCount = res.count;
+        this.tweets = res.tweets;
+      }
+    );
   }
 
   loadData()
@@ -36,26 +56,16 @@ export class MyProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
     this.tweets = [];
     this.followers = [];
     this.followings = [];
-    // this.user = this.dataShareService.currentUser;
-    this.tweetService.getTweets().then(
-      (res: any) => {
-        console.log('getTweetsById ', res);
-        this.tweetCount = res.count;
-        this.tweets = res.tweets;
-      }
-    );
+
 
     this.tweetService.getFollowers().then(
       (res: any) => {
-        console.log('getFollowerssById ', res);
-        this.tweetCount = res.count;
         this.followers = res.followers;
       }
     )
 
     this.tweetService.getFollowings().then(
       (res: any) => {
-        console.log('getFollowingsById ', res);
         this.followings = res.followings;
       }
     )
@@ -66,8 +76,8 @@ export class MyProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.destroy$.next(true);
-    // this.destroy$.complete();
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 
 }

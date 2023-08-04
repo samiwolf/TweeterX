@@ -8,6 +8,7 @@ export class DatashareService {
   private _currentPage = 'home';
   private _currentUser: any = null;
   currentUserUpdated = new Subject<any>();
+  successfullyTweeted = new Subject<any>();
   constructor() { }
 
 

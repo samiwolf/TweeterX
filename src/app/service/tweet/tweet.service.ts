@@ -75,4 +75,28 @@ export class TweetService {
       .get(`${this.handlerUrl}/users`).toPromise();
 
   }
+
+  follow(id: string)
+  {
+    return this.http
+      .post(`${this.handlerUrl}/follow`, {
+        user_id: id
+      }).toPromise();
+  }
+
+  unfollow(id: string)
+  {
+    return this.http
+      .post(`${this.handlerUrl}/unfollow`, {
+        user_id: id
+      }).toPromise();
+  }
+
+  tweet(text: string)
+  {
+    return this.http
+      .post(`${this.handlerUrl}/tweet`, {
+        content: text
+      }).toPromise();
+  }
 }

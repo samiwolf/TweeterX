@@ -1,5 +1,7 @@
 <div>
-  <ion-textarea fill="outline" placeholder="Enter tweet"></ion-textarea>
+  <ion-textarea fill="outline" placeholder="Enter tweet"
+                (click)="postTweet()"
+                [(ngModel)]="tweet"></ion-textarea>
   <ion-button class="ion-float-end">Post</ion-button>
 </div>
 
