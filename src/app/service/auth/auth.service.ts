@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CookieService} from "ngx-cookie-service";
 import {environment} from "../../../environments/environment";
@@ -8,6 +8,8 @@ import {of} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
+
+  private handlerUrl = `${environment.handlerApiUrl}`;
 
   constructor(private http: HttpClient,
               private cookieService: CookieService) {
@@ -27,6 +29,14 @@ export class AuthService {
     return this.cookieService.get('access_token');
   }
 
+  public login(data: any) {
+    return this.http
+      .post(`${this.handlerUrl}/login`, {
+        email: data.email,
+        password: data.password,
+      }).toPromise();
+  }
+
   setAuthToken(token: string) {
     this.cookieService.set(
       'access_token', token,
@@ -39,9 +49,10 @@ export class AuthService {
       return {
         'X-Jwt-Token': 'Bearer ' + this.authToken
       };
-    }
-    else {
-      return {};
+    } else {
+      return {
+        'X-Jwt-Token': ''
+      };
     }
   }
 }

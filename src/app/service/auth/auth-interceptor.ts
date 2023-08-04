@@ -8,12 +8,6 @@ import {environment} from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-    private isRefreshing = false;
-    private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
-        null
-    );
-    private earlierAccessToken: string;
-    private earlierRefreshToken: string;
     constructor(
         private authService: AuthService
     ) {}
