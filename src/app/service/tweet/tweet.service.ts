@@ -26,4 +26,11 @@ export class TweetService {
       .get(`${this.handlerUrl}/timeline`).toPromise();
 
   }
+
+  getUsers()
+  {
+    return this.http
+      .get(`${this.handlerUrl}/users`).toPromise();
+
+  }
 }

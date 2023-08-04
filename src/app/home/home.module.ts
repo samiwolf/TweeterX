@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import {QuicklinkComponent} from "../components/quicklink/quicklink.component";
 import {PostComponent} from "../components/post/post.component";
 import {TweetComponent} from "../components/tweet/tweet.component";
+import {UserProfileComponent} from "../components/user-profile/user-profile/user-profile.component";
+import {UsersListComponent} from "../components/users-list/users-list.component";
 
 
 @NgModule({
@@ -17,7 +19,7 @@ import {TweetComponent} from "../components/tweet/tweet.component";
     IonicModule,
     HomePageRoutingModule,
   ],
-  declarations: [HomePage, QuicklinkComponent, PostComponent, TweetComponent],
-  exports: [QuicklinkComponent, PostComponent, TweetComponent]
+  declarations: [HomePage, QuicklinkComponent, PostComponent, TweetComponent, UserProfileComponent, UsersListComponent],
+  exports: [QuicklinkComponent, PostComponent, TweetComponent, UserProfileComponent, UsersListComponent]
 })
 export class HomePageModule {}

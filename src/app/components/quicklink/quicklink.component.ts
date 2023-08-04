@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {DatashareService} from "../../service/datashare/datashare.service";
 
 @Component({
   selector: 'app-quicklink',
@@ -7,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuicklinkComponent  implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router,
+              public dataShareService: DatashareService) { }
 
-  ngOnInit() {}
+  ngOnInit( ) {}
 
+  goto(path: string) {
+    this.dataShareService.currentPage = 'users';
+  }
 }
