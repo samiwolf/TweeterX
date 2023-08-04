@@ -48,6 +48,27 @@ export class TweetService {
 
   }
 
+  getTweets()
+  {
+    return this.http
+      .get(`${this.handlerUrl}/my-tweets`).toPromise();
+
+  }
+
+  getFollowings()
+  {
+    return this.http
+      .get(`${this.handlerUrl}/following`).toPromise();
+
+  }
+
+  getFollowers()
+  {
+    return this.http
+      .get(`${this.handlerUrl}/followers`).toPromise();
+
+  }
+
   getUsers()
   {
     return this.http

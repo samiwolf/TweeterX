@@ -10,6 +10,7 @@ import {PostComponent} from "../components/post/post.component";
 import {TweetComponent} from "../components/tweet/tweet.component";
 import {UserProfileComponent} from "../components/user-profile/user-profile/user-profile.component";
 import {UsersListComponent} from "../components/users-list/users-list.component";
+import {MyProfileComponent} from "../components/my-profile/my-profile/my-profile.component";
 
 
 @NgModule({
@@ -19,7 +20,9 @@ import {UsersListComponent} from "../components/users-list/users-list.component"
     IonicModule,
     HomePageRoutingModule,
   ],
-  declarations: [HomePage, QuicklinkComponent, PostComponent, TweetComponent, UserProfileComponent, UsersListComponent],
-  exports: [QuicklinkComponent, PostComponent, TweetComponent, UserProfileComponent, UsersListComponent]
+  declarations: [HomePage, QuicklinkComponent, PostComponent,
+    TweetComponent, UserProfileComponent, UsersListComponent, MyProfileComponent],
+  exports: [QuicklinkComponent, PostComponent,
+    TweetComponent, UserProfileComponent, UsersListComponent, MyProfileComponent]
 })
 export class HomePageModule {}

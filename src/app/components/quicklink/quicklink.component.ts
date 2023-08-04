@@ -15,6 +15,6 @@ export class QuicklinkComponent  implements OnInit {
   ngOnInit( ) {}
 
   goto(path: string) {
-    this.dataShareService.currentPage = 'users';
+    this.dataShareService.currentPage = path;
   }
 }
