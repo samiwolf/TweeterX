@@ -12,13 +12,13 @@ export class TweetComponent  implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('one tweet: ', this.tweet);
+    // console.log('one tweet: ', this.tweet);
     this.parseTweet();
   }
 
   parseTweet() {
-    this.tweet.text = this.tweet.text.replace(/#[a-zA-Z]+/g,`<span class="highlight">$&</span>`);
-    this.tweet.text = this.tweet.text.replace(/@[a-zA-Z]+/g,`<span class="highlight">$&</span>`);
+    this.tweet.content = this.tweet.content.replace(/#[a-zA-Z]+/g,`<span class="highlight">$&</span>`);
+    this.tweet.content = this.tweet.content.replace(/@[a-zA-Z]+/g,`<span class="highlight">$&</span>`);
   }
 
 }

@@ -19,4 +19,11 @@ export class TweetService {
     return this.http
       .get(`${this.handlerUrl}/my-tweets`).toPromise();
   }
+
+  getMyTimeline()
+  {
+    return this.http
+      .get(`${this.handlerUrl}/timeline`).toPromise();
+
+  }
 }

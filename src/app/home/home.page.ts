@@ -8,40 +8,44 @@ import {TweetService} from "../service/tweet/tweet.service";
 })
 export class HomePage implements AfterViewInit{
 
-  tweets = [{
-    img: 'assets/icon/person-circle.svg',
-    username: 'samiul',
-    handle: 'samiul',
-    date: Date.now().toLocaleString(),
-    liked: false,
-    like: '3',
-    response: 'hsdasd',
-    text : 'This Bennett build specializes in pure and effective healing to keep your party alive. Be sure to have his Base ATK really high to have a better ATK buff.'
-  }, {
-    img: 'assets/icon/person-circle.svg',
-    username: 'samiul',
-    handle: 'samiul',
-    date: Date.now().toLocaleString(),
-    liked: false,
-    like: '3',
-    response: 'hsdasd',
-    text : 'This Bennett build specializes in pure and effective healing to keep your party alive. Be sure to have his Base ATK really high to have a better ATK buff.'
-  }, {
-    img: 'assets/icon/person-circle.svg',
-    username: 'samiul',
-    handle: 'samiul',
-    date: Date.now().toLocaleString(),
-    liked: false,
-    like: '3',
-    response: 'hsdasd',
-    text : 'This Bennett build specializes in pure and effective healing to keep your party alive. Be sure to have his Base ATK really high to have a better ATK buff.'
-  }]
+  tweetCount = 0;
+  tweets = [];
+  // tweets = [{
+  //   img: 'assets/icon/person-circle.svg',
+  //   username: 'samiul',
+  //   handle: 'samiul',
+  //   date: Date.now().toLocaleString(),
+  //   liked: false,
+  //   like: '3',
+  //   response: 'hsdasd',
+  //   text : 'This Bennett build specializes in pure and effective healing to keep your party alive. Be sure to have his Base ATK really high to have a better ATK buff.'
+  // }, {
+  //   img: 'assets/icon/person-circle.svg',
+  //   username: 'samiul',
+  //   handle: 'samiul',
+  //   date: Date.now().toLocaleString(),
+  //   liked: false,
+  //   like: '3',
+  //   response: 'hsdasd',
+  //   text : 'This Bennett build specializes in pure and effective healing to keep your party alive. Be sure to have his Base ATK really high to have a better ATK buff.'
+  // }, {
+  //   img: 'assets/icon/person-circle.svg',
+  //   username: 'samiul',
+  //   handle: 'samiul',
+  //   date: Date.now().toLocaleString(),
+  //   liked: false,
+  //   like: '3',
+  //   response: 'hsdasd',
+  //   text : 'This Bennett build specializes in pure and effective healing to keep your party alive. Be sure to have his Base ATK really high to have a better ATK buff.'
+  // }]
   constructor(private tweetService: TweetService) {}
 
   ngAfterViewInit(): void {
-    this.tweetService.getMyTweets().then(
+    this.tweetService.getMyTimeline().then(
       (res: any) => {
         console.log('getMyTweets ', res);
+        this.tweetCount = res.count;
+        this.tweets = res.timeline;
       }
     )
   }
