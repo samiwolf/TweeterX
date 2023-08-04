@@ -27,6 +27,27 @@ export class TweetService {
 
   }
 
+  getTweetsById(id: string)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/users/` + id + '/tweets').toPromise();
+
+  }
+
+  getFollowingsById(id: string)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/users/` + id + '/following').toPromise();
+
+  }
+
+  getFollowerssById(id: string)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/users/` + id + '/followers').toPromise();
+
+  }
+
   getUsers()
   {
     return this.http

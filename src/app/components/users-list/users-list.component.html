@@ -1,9 +1,13 @@
-<ion-list >
+<ion-list class="ion-no-padding">
   <ion-item *ngFor="let user of userList" (click)="viewUserProfile(user)">
     <ion-avatar slot="start">
       <img src="assets/icon/person-circle.svg" />
     </ion-avatar>
     <ion-label class="ion-text-center">{{user.username}}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="userList.length === 0">
+    <ion-label class="ion-text-center">No entry</ion-label>
   </ion-item>
 
 </ion-list>

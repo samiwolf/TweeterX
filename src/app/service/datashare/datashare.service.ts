@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class DatashareService {
   private _currentPage = 'home';
   private _currentUser: any = null;
+  currentUserUpdated = new Subject<any>();
   constructor() { }
 
 
@@ -15,6 +17,7 @@ export class DatashareService {
 
   set currentUser(value: any) {
     this._currentUser = value;
+    this.currentUserUpdated.next(value);
   }
 
   get currentPage(): string {
