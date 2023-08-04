@@ -37,6 +37,15 @@ export class AuthService {
       }).toPromise();
   }
 
+  public signup(data: any) {
+    return this.http
+      .post(`${this.handlerUrl}/signup`, {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+      }).toPromise();
+  }
+
   setAuthToken(token: string) {
     this.cookieService.set(
       'access_token', token,

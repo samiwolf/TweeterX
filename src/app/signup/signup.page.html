@@ -11,25 +11,23 @@
     <ion-grid class="width-inherit">
       <ion-row>
         <ion-col offset="4" size="4">
-          <form>
             <ion-item lines="full">
               <ion-label position="floating">Username</ion-label>
-              <ion-input type="text" required></ion-input>
+              <ion-input type="text"  [(ngModel)]="username" required></ion-input>
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Email</ion-label>
-              <ion-input type="text" required></ion-input>
+              <ion-input type="text" [(ngModel)]="email" required></ion-input>
             </ion-item>
             <ion-item lines="full">
               <ion-label position="floating">Password</ion-label>
-              <ion-input type="password" required></ion-input>
+              <ion-input type="password" [(ngModel)]="password" required></ion-input>
             </ion-item>
-            <ion-row>
-              <ion-col>
-                <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
-              </ion-col>
-            </ion-row>
-          </form>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="signup()" type="submit" color="danger" expand="block">Sign Up</ion-button>
+            </ion-col>
+          </ion-row>
         </ion-col>
       </ion-row>
     </ion-grid>
