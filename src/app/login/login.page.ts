@@ -9,8 +9,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  email = 'janedoe@doe.com';
-  password = 'notsosecurepassword';
+  email = '';
+  password = '';
 
   constructor(
     private authService: AuthService,
