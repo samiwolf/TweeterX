@@ -70,7 +70,6 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
     this.tweetService.getFollowerssById(this.user.id).then(
       (res: any) => {
         console.log('getFollowerssById ', res);
-        this.tweetCount = res.count;
         this.followers = res.followers;
       }
     )
