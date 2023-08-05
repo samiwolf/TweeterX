@@ -34,9 +34,25 @@
   </ion-col>
 </ion-row>
 
+<ion-row *ngIf="showFollowers && !followersLoadingComplete">
+  <ion-col>
+    <ion-infinite-scroll (ionInfinite)="loadNextFollowers($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-col>
+</ion-row>
+
 <ion-row *ngIf="showFollowing">
   <ion-col>
     <app-users-list [userList]="followings" [loadUsersList]="false"> </app-users-list>
+  </ion-col>
+</ion-row>
+
+<ion-row *ngIf="showFollowing && !followingsLoadingComplete">
+  <ion-col>
+    <ion-infinite-scroll (ionInfinite)="loadNextFollowings($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </ion-col>
 </ion-row>
 

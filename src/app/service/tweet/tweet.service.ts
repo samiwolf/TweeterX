@@ -66,10 +66,38 @@ export class TweetService {
 
   }
 
+  getFollowingsByIdPaginate(id: string, page: number)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/users/` + id + '/following'+ '?page=' + page).toPromise();
+
+  }
+
+  getFollowersByIdPaginate(id: string, page: number)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/users/` + id + '/followers'+ '?page=' + page).toPromise();
+
+  }
+
   getTweets()
   {
     return this.http
       .get(`${this.handlerUrl}/my-tweets`).toPromise();
+
+  }
+
+  getFollowingsPaginate(page: number)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/following` +  '?page=' + page).toPromise();
+
+  }
+
+  getFollowersPaginate(page: number)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/followers`  +  '?page=' + page).toPromise();
 
   }
 
