@@ -1,5 +1,7 @@
 <div>
   <ion-textarea fill="outline" placeholder="Enter tweet"
+                [counter]="true" maxlength="160"
+                [autoGrow]="true"
                 [(ngModel)]="tweet"></ion-textarea>
   <ion-button (click)="postTweet()" class="ion-float-end">Post</ion-button>
 </div>
