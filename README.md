@@ -1,5 +1,5 @@
 ## Requirements
-Node Version 18.10.0
+Node Version 18.17.0
 
 Ionic CLI Version 7.1.1
 ## Installation
