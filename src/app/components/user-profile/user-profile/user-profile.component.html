@@ -15,7 +15,7 @@
     <ion-row>
       <ion-col size="12">
         <div [innerHtml]="user.email"></div>
-        <div>
+        <div *ngIf="user.join_date">
           <span>Member since {{user.join_date | date:'yyyy-MM-dd'}}</span>
         </div>
         <!--        <img src="assets/icon/person-circle.svg">-->
@@ -26,6 +26,10 @@
     <ion-button (click)="follow(user.id)"
 
                 fill="clear" expand="block">Follow</ion-button>
+    <br>
+    <ion-button (click)="follow(user.id)"
+
+                fill="clear" expand="block">Unfollow</ion-button>
   </ion-col>
 </ion-row>
 <ion-row>
