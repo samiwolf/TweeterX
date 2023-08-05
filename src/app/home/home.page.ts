@@ -11,6 +11,7 @@ export class HomePage implements AfterViewInit{
 
   tweetCount = 0;
   tweets = [];
+  loadingNextTweets = false;
   constructor(private tweetService: TweetService,
               public dataShareService: DatashareService) {}
 
@@ -22,6 +23,23 @@ export class HomePage implements AfterViewInit{
         this.tweets = res.timeline;
       }
     )
+  }
+
+  loadNextTweets(event: any) {
+    if (this.loadingNextTweets === false && this.tweets.length >= 30) {
+      this.loadingNextTweets = true;
+      this.tweetService.getMyTimelinePaginate( Math.floor(this.tweets.length / 30) + 1).then(
+        (res: any) => {
+          console.log('getMyTimelinePaginate ', res);
+          this.tweetCount += res.count;
+          this.tweets = this.tweets.concat(res.timeline);
+          this.loadingNextTweets = false;
+          setTimeout(() => {
+            event.target.complete();
+          }, 200);
+        }
+      );
+    }
   }
 
 

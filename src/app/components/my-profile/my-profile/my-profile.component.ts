@@ -17,6 +17,7 @@ export class MyProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
   tweets = [];
   followers = [];
   followings = [];
+  loadingNextTweets = false;
   destroy$ = new Subject<any>();
 
   constructor(private tweetService: TweetService,
@@ -47,6 +48,23 @@ export class MyProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
         this.tweets = res.my_tweets;
       }
     );
+  }
+
+  loadNextTweets(event: any) {
+    if (this.loadingNextTweets === false && this.tweets.length >= 30) {
+      this.loadingNextTweets = true;
+      this.tweetService.getMyTweetsPaginate( Math.floor(this.tweets.length / 30) + 1).then(
+        (res: any) => {
+          console.log('getMyTweetsPaginate ', res);
+          this.tweetCount += res.count;
+          this.tweets = this.tweets.concat(res.my_tweets);
+          this.loadingNextTweets = false;
+          setTimeout(() => {
+            event.target.complete();
+          }, 200);
+        }
+      );
+    }
   }
 
   loadData()

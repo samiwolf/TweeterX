@@ -68,3 +68,11 @@
     <app-users-list [userList]="followings" [loadUsersList]="false"> </app-users-list>
   </ion-col>
 </ion-row>
+
+<ion-row *ngIf="tweets.length > 0 && !showFollowers && !showFollowing" >
+  <ion-col>
+    <ion-infinite-scroll (ionInfinite)="loadNextTweets($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-col>
+</ion-row>

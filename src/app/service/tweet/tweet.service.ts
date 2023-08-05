@@ -20,17 +20,35 @@ export class TweetService {
       .get(`${this.handlerUrl}/my-tweets`).toPromise();
   }
 
+  getMyTweetsPaginate(page: number)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/my-tweets`+ '?page=' + page).toPromise();
+  }
+
   getMyTimeline()
   {
     return this.http
       .get(`${this.handlerUrl}/timeline`).toPromise();
+  }
 
+  getMyTimelinePaginate(page: number)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/timeline`+ '?page=' + page).toPromise();
   }
 
   getTweetsById(id: string)
   {
     return this.http
       .get(`${this.handlerUrl}/users/` + id + '/tweets').toPromise();
+
+  }
+
+  getTweetsByIdPaginate(id: string, page: number)
+  {
+    return this.http
+      .get(`${this.handlerUrl}/users/` + id + '/tweets' + '?page=' + page).toPromise();
 
   }
 

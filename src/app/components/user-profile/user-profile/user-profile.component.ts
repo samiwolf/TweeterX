@@ -9,7 +9,7 @@ import {ToastController} from "@ionic/angular";
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
 })
-export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
+export class UserProfileComponent implements OnInit, AfterViewInit, OnDestroy {
   user: any;
   tweetCount = 0;
   showFollowing = false;
@@ -18,6 +18,7 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
   followers = [];
   followings = [];
   destroy$ = new Subject<any>();
+  loadingNextTweets = false;
 
   constructor(private tweetService: TweetService,
               private toastController: ToastController,
@@ -49,8 +50,7 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
     await toast.present();
   }
 
-  loadData()
-  {
+  loadData() {
 
     this.tweetCount = 0;
     this.showFollowing = false;
@@ -82,8 +82,25 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
     )
   }
 
+  loadNextTweets(event: any) {
+    if (this.loadingNextTweets === false && this.tweets.length >= 30) {
+      this.loadingNextTweets = true;
+      this.tweetService.getTweetsByIdPaginate(this.user.id, Math.floor(this.tweets.length / 30) + 1).then(
+        (res: any) => {
+          console.log('getTweetsByIdPaginate ', res);
+          this.tweetCount += res.count;
+          this.tweets = this.tweets.concat(res.tweets);
+          this.loadingNextTweets = false;
+          setTimeout(() => {
+            event.target.complete();
+          }, 200);
+        }
+      );
+    }
+  }
+
   ngAfterViewInit(): void {
-  this.loadData();
+    this.loadData();
   }
 
   ngOnDestroy(): void {
@@ -93,8 +110,7 @@ export class UserProfileComponent  implements OnInit, AfterViewInit, OnDestroy {
 
   follow(id: string) {
     this.tweetService.follow(id).then(
-      (res: any) =>
-      {
+      (res: any) => {
         console.log('res', res);
         this.presentToast(res.resp);
       }

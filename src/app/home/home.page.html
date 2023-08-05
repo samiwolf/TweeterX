@@ -19,6 +19,13 @@
               <app-tweet *ngFor="let tweet of tweets" [tweet]="tweet"></app-tweet>
             </ion-col>
           </ion-row>
+          <ion-row *ngIf="tweets.length > 0">
+            <ion-col>
+              <ion-infinite-scroll (ionInfinite)="loadNextTweets($event)">
+                <ion-infinite-scroll-content></ion-infinite-scroll-content>
+              </ion-infinite-scroll>
+            </ion-col>
+          </ion-row>
         </ion-grid>
 
 
