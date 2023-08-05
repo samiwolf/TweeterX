@@ -1,3 +1,8 @@
 export const environment = {
-  production: true
+  production: true,
+  cookieOptions: {
+    path: '/',
+    expires: 91,
+  },
+  handlerApiUrl: 'https://missingdata.pythonanywhere.com'
 };
